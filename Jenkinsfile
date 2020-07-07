@@ -19,7 +19,8 @@ pipeline {
 		}
 	stage('image-push') {
             steps {
-                sh 'docker push eknaprasath/tomcat-sample:${BUILD_ID} .'
+                sh 'docker push eknaprasath/tomcat-sample:${BUILD_ID}'
             }
-      }
+        }
+    }
 }
