@@ -4,16 +4,15 @@ pipeline {
         stage('build') {
             steps {
                // sh 'mvn --version'
-               sh 'echo "Build Stage"'
+               sh 'mvn clean install -DskipTests'
             }
-    
         }
         stage('test') {
             steps {
-                sh 'echo "test stage"'
+                sh 'mvn test'
             }
         }
-		stage('package') {
+	stage('package') {
             steps {
                 sh 'docker build -t tomcat-webapp:${BUILD_ID} .'
             }
