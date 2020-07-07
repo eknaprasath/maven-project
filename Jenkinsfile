@@ -15,7 +15,7 @@ pipeline {
         }
 		stage('package') {
             steps {
-                sh 'docker build -t tomcat-webapp:${BUILD_ID}'
+                sh 'docker build -t tomcat-webapp:${BUILD_ID} .'
             }
         }
     }
