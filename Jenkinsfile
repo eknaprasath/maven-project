@@ -1,16 +1,22 @@
 pipeline {
     agent any
-    
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
-                sh 'mvn clean install -DskipTests'
+               // sh 'mvn --version'
+               sh 'echo "Build Stage"'
+            }
+    
+        }
+        stage('test') {
+            steps {
+                sh 'echo "test stage"'
             }
         }
-        stage('Test') {
+		stage('package') {
             steps {
-                sh 'mvn test'
+                sh 'docker build -t tomcat-webapp:${BUILD_ID}'
             }
         }
-    }   
+    }
 }
