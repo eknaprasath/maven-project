@@ -14,8 +14,12 @@ pipeline {
         }
 	stage('package') {
             steps {
-                sh 'docker build -t tomcat-webapp:${BUILD_ID} .'
+                sh 'docker build -t eknaprasath/tomcat-sample:${BUILD_ID} .'
             }
-        }
-    }
+		}
+	stage('image-push') {
+            steps {
+                sh 'docker push eknaprasath/tomcat-sample:${BUILD_ID} .'
+            }
+      }
 }
