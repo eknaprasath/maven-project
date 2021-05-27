@@ -1,6 +1,6 @@
 FROM tomcat:latest
 RUN apt-get update && \
-    apt-get upgrade 
+    apt-get upgrade -y
 
 COPY webapp/target/webapp.war  /usr/local/tomcat/webapps/
 
