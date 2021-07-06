@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('checkout') {
+            steps {
+              git 'https://github.com/eknaprasath/maven-project.git'
+            }
+        }
         stage('build') {
             steps {
                // sh 'mvn --version'
@@ -12,5 +17,13 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage('command') {
+           steps {
+                sh '''pwd
+                      cd
+                      ls
+                    whoami'''
+            }
+        }  
     }
 }
